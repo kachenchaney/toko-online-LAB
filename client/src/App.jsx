@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { BrowserRouter, Routes, Route, Link, useParams, useNavigate, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link, useParams, useNavigate, Navigate, useLocation } from 'react-router-dom';
+import ReactGA from "react-ga4";
 
 // IMPORT HALAMAN LOGIN & REGISTER YANG TADI KITA BUAT
 // (Pastikan file Login.jsx dan Register.jsx sudah ada di folder src)
@@ -265,6 +266,19 @@ function ProductDetail({ addToCart, token }) { // TERIMA PROPS TOKEN
   );
 }
 
+function PageTracker() {
+  const location = useLocation();
+
+  useEffect(() => {
+    ReactGA.send({
+      hitType: "pageview",
+      page: location.pathname + location.search,
+    });
+  }, [location]);
+
+  return null;
+}
+
 // --- APP & ROUTING CONFIGURATION ---
 function App() {
   const [cartCount, setCartCount] = useState(0);
@@ -284,6 +298,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <PageTracker />
       <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
         
         {/* Pass token & logout function ke Navbar */}
