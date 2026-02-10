@@ -1,0 +1,105 @@
+/* client/src/index.css */
+:root {
+  --primary: #011638; /* Biru Tua */
+  --secondary: #1e293b; /* Hitam Gelap */
+  --accent: #f59e0b; /* Kuning Emas */
+  --bg-light: #f8fafc;
+  --text-dark: #0f172a;
+  --text-gray: #64748b;
+  --white: #ffffff;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+  --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
+  --radius: 12px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', system-ui, sans-serif; }
+
+body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; }
+
+/* Navbar */
+.navbar {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1rem 5%; background: var(--white); box-shadow: var(--shadow-sm);
+  position: sticky; top: 0; z-index: 1000;
+  font-family: "Inter", sans-serif;
+}
+.logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); text-decoration: none; display: flex; align-items: center; gap: 8px;}
+.nav-actions { display: flex; gap: 20px; align-items: center; }
+.cart-btn { position: relative; cursor: pointer; font-size: 1.2rem; }
+.badge { position: absolute; top: -8px; right: -8px; background: var(--accent); color: white; font-size: 0.7rem; padding: 2px 6px; border-radius: 50%; }
+
+/* Hero Section (Banner) */
+.hero {
+  background: linear-gradient(135deg, var(--primary) 0%, #1e40af 100%);
+  color: white; padding: 4rem 5%; text-align: center; margin-bottom: 2rem;
+  border-radius: 0 0 30px 30px;
+}
+.hero h1 { font-size: 2.5rem; margin-bottom: 1rem;  font-family: 'Archivo Black', sans-serif;}
+.hero p { opacity: 0.9; font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+
+/* Controls (Search & Filter) */
+.controls { display: flex; justify-content: space-between; padding: 0 5%; margin-bottom: 2rem; flex-wrap: wrap; gap: 10px; }
+.search-bar {
+  flex: 1; max-length: 1000px; padding: 12px 20px; border: 1px solid #ddd;
+  border-radius: 50px; outline: none; transition: 0.3s;
+}
+.search-bar:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
+
+/* Grid Produk */
+.product-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 25px; padding: 0 5%; margin-bottom: 4rem;
+}
+.product-card {
+  background: var(--white); border-radius: var(--radius); overflow: hidden;
+  box-shadow: var(--shadow-sm); transition: transform 0.2s, box-shadow 0.2s;
+  display: flex; flex-direction: column;
+}
+.product-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+.card-img { width: 100%; height: 200px; object-fit: cover; background: #eee; }
+.card-body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
+.card-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; }
+.card-price { color: var(--primary); font-weight: 700; font-size: 1.2rem; margin-bottom: 1rem; }
+.card-actions { margin-top: auto; display: flex; gap: 10px; }
+
+/* Tombol */
+.btn {
+  padding: 10px 16px; border: none; border-radius: 8px; cursor: pointer;
+  font-weight: 600; transition: 0.2s; flex: 1; display: flex; justify-content: center; align-items: center; gap: 5px; text-decoration: none;
+}
+.btn-primary { background: var(--secondary); color: white; }
+.btn-primary:hover { background: #000; }
+.btn-danger { background: #fee2e2; color: #ef4444; } /* Merah soft */
+.btn-danger:hover { background: #fecaca; }
+.btn-outline { border: 1px solid #ddd; background: transparent; color: var(--text-dark); }
+.btn-outline:hover { border-color: var(--primary); color: var(--primary); }
+
+/* Detail Page */
+.detail-container { padding: 2rem 5%; max-width: 1000px; margin: 0 auto; display: flex; gap: 40px; align-items: start; }
+.detail-img { width: 50%; border-radius: var(--radius); box-shadow: var(--shadow-md); }
+.detail-info { flex: 1; }
+
+/* Footer */
+footer { background: var(--secondary); color: white; text-align: center; padding: 2rem; margin-top: auto; }
+
+/* Responsif HP */
+@media (max-width: 768px) {
+  .detail-container { flex-direction: column; }
+  .detail-img { width: 100%; }
+  .hero h1 { font-size: 1.8rem; }
+}
+
+/* Tambahan untuk Formulir (Create/Update) */
+.form-container {
+  max-width: 600px; margin: 2rem auto; padding: 2rem;
+  background: white; border-radius: var(--radius); box-shadow: var(--shadow-md);
+}
+.form-group { margin-bottom: 1.5rem; }
+.form-group label { display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-dark); }
+.form-control {
+  width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px;
+  font-size: 1rem; transition: 0.3s;
+}
+.form-control:focus { border-color: var(--primary); outline: none; box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
+textarea.form-control { resize: vertical; min-height: 100px; }
+.btn-block { width: 100%; margin-top: 1rem; }
